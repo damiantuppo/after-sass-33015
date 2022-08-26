@@ -1,0 +1,82 @@
+#btn-menu {
+    display: none;
+}
+
+header {
+    width: 100%;
+    background-color: red;
+
+    label {
+        display: none;
+        width: $ancho-label;
+        height: $alto-label;
+        padding: 1px;
+        border-right: $border;
+
+        &:hover {
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+
+.menu {
+    ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        display: flex;
+
+        li {
+            color: $color-nav;
+            font-size: 40px;
+            text-align: center;
+            flex-grow: 1;
+            border-right: 1px solid black;
+
+            a {
+                display: block;
+                font-size: 19px;
+                color: black;
+                padding: 15px 20px;
+                text-decoration: none;
+                background-color: $color-nav;
+                border: 0px;
+            }
+
+            button {
+                border: 0px;
+            }
+        }
+    }
+}
+
+
+/*Si la pantalla es mas chica, el menú desaparece y se vuelve desplegable (hamburguesa)*/
+@media (max-width: 800px) {
+    header label {
+        display: block;
+    }
+
+    .menu {
+        position: absolute;
+        background: $color-nav;
+        width: 70%;
+        margin-left: -70%;
+        transition: all 0.8s;
+        z-index: 500;
+    }
+
+    .menu ul {
+        flex-direction: column;
+    }
+
+    .menu li {
+        border-top: 1px solid $color-nav;
+    }
+
+    #btn-menu:checked~.menu {
+        margin: 10px 0px 0px 0px;
+    }
+}
